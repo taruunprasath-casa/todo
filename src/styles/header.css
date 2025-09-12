@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  margin-right: 10px;
+  padding: 15px 20px; 
+  background-color: var(--header-bg);
+  border-radius: 10px;
+}
+
+.header-left h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.date {
+  display: block;
+  font-size: 16px;
+  color: #ff0000;
+  margin-top: 4px;
+}
+
+.task-count {
+  background: linear-gradient(135deg, #8bcbff, #6cc9f0);
+  color: var(--text-color);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(24, 137, 250, 0.4);
+}
+.theme-toggle {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.2s ease-in-out;
+}

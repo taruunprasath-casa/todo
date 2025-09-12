@@ -1,0 +1,86 @@
+.task-details {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100%;
+  background-color: #ffffff;
+  border-left: 1px solid #ddd;
+  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+.task-details h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.task-details input[type="text"],
+.task-details textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.task-details input[type="text"]:focus,
+.task-details textarea:focus {
+  border-color: #007bff;
+}
+
+.task-details textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.task-details .actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+#button {
+  flex: 1;
+  margin: 30px 5px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#button:hover {
+  background-color: #0056b3;
+}
+
+#button:nth-child(2) {
+  background-color: #dc3545;
+}
+
+#button:nth-child(2):hover {
+  background-color: #a71d2a;
+}
+
+#button:nth-child(3) {
+  background-color: #e79d60;
+}
+
+#button:nth-child(3):hover {
+  background-color: #bd722c;
+}
