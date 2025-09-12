@@ -1,42 +1,65 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+html, body {
+  height: 100%;
+  width: 100%;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Segoe UI", Roboto, sans-serif;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.app {
+  display: flex;
+  height: 100vh;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.main-content {
+  flex: 1;
+  padding: 25px;
+  background: var(--bg-color);
+  border-radius: 16px;
+  margin: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
 }
 
-.card {
-  padding: 2em;
+.app.light {
+  --bg-color: whitesmoke;
+  --text-color: #000000;
+  --header-bg: #f5f5f5;
+  --card-bg: #fdfdfd;
+  --shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
-.read-the-docs {
-  color: #888;
+.app.dark {
+   --bg-color: #1e1e1e;
+  --text-color: #f5f5f5;
+  --header-bg: #333333;
+  --card-bg: #2a2a2a;
+  --shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  background-color: var(--header-bg);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme-toggle {
+  margin-left: 15px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
