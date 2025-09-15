@@ -1,5 +1,7 @@
 import React from "react";
 import "../styles/header.css";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 interface HeaderProps {
   count: number;
@@ -25,12 +27,23 @@ const Header: React.FC<HeaderProps> = ({ count, completed, theme, setTheme }) =>
         <span className="task-count">
           {completed}/{count} Done
         </span>
-        <button
-          className="theme-toggle"
-          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        >
-          {theme === "light" ? " Dark" : "Light"}
-        </button>
+
+        {theme === "light" ? (
+          <button
+            className="theme-btn"
+            onClick={() => setTheme("dark")}
+          >
+            <DarkModeIcon className="theme-icon dark" />
+          </button>
+        ) : (
+          <button
+            className="theme-btn"
+            onClick={() => setTheme("light")}
+          >
+            <LightModeIcon className="theme-icon light" />
+          </button>
+        )}
+
       </div>
     </header>
   );
