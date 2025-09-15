@@ -34,7 +34,7 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ task, onClose, onUpdate, onDe
         onChange={(e) => setEditedTask({ ...editedTask, description: e.target.value })}
       />
 
-      <div className="date-row">
+      <div className="date_row">
         <label>
           Start Date:
           <input
@@ -66,7 +66,7 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ task, onClose, onUpdate, onDe
         </select>
       </label>
 
-      {/* Recurring */}
+
       <label>
         Recurring:
         <select
@@ -79,7 +79,7 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ task, onClose, onUpdate, onDe
         </select>
       </label>
 
-      {/* Priority */}
+
       <label>
         Priority:
         <select
@@ -90,15 +90,6 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ task, onClose, onUpdate, onDe
           <option value="medium">Medium</option>
           <option value="low">Low</option>
         </select>
-      </label>
-
-      <label>
-        <input
-          type="checkbox"
-          checked={editedTask.completed}
-          onChange={(e) => setEditedTask({ ...editedTask, completed: e.target.checked })}
-        />
-        Completed
       </label>
 
       <div className="actions">
