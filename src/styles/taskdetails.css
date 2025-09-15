@@ -1,86 +1,168 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --card-bg: #f9f9f9;
+  --input-bg: #ffffff;
+  --input-border: #ddd;
+  --accent-color: #007bff;
+  --danger-color: #e63946;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-color: #1e1e1e;
+  --text-color: #e5e5e5;
+  --card-bg: #2a2a2a;
+  --input-bg: #333;
+  --input-border: #444;
+  --accent-color: #4da3ff;
+  --danger-color: #ff6b6b;
+  --shadow: rgba(0, 0, 0, 0.6);
+}
+
 .task-details {
   position: fixed;
   top: 0;
   right: 0;
-  width: 320px;
+  width: 340px;
   height: 100%;
-  background-color: #ffffff;
-  border-left: 1px solid #ddd;
-  box-shadow: -2px 0 6px rgba(0, 0, 0, 0.15);
+  background: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: -4px 0 15px var(--shadow);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  z-index: 1000;
-  font-family: "Segoe UI", Tahoma, sans-serif;
+  animation: slideIn 0.3s ease forwards;
+  overflow-y: auto;
+  z-index: 999;
 }
 
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Headline */
 .task-details h3 {
-  margin: 0;
   font-size: 1.4rem;
   font-weight: 600;
-  color: #333;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
+  margin-bottom: 10px;
+  color: var(--accent-color);
 }
 
+/* Inputs */
 .task-details input[type="text"],
-.task-details textarea {
+.task-details input[type="date"],
+.task-details textarea,
+.task-details select {
   width: 100%;
   padding: 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: var(--text-color);
   font-size: 0.95rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.task-details input:focus,
+.task-details textarea:focus,
+.task-details select:focus {
   outline: none;
-  transition: border-color 0.2s ease-in-out;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 6px var(--accent-color);
 }
 
-.task-details input[type="text"]:focus,
-.task-details textarea:focus {
-  border-color: #007bff;
-}
-
+/* Textarea */
 .task-details textarea {
-  min-height: 100px;
+  min-height: 80px;
   resize: vertical;
 }
 
-.task-details .actions {
+/* Date row layout */
+.date-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.date-row label {
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Labels */
+.task-details label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-color);
+}
+
+/* Checkbox */
+.task-details input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+/* Action buttons */
+.actions {
   display: flex;
   justify-content: space-between;
   margin-top: auto;
+  gap: 10px;
 }
 
-#button {
+.actions button {
   flex: 1;
-  margin: 30px 5px;
   padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
   font-size: 0.95rem;
   font-weight: 500;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: transform 0.15s ease, background 0.2s;
 }
 
-#button:hover {
-  background-color: #0056b3;
+.actions button#button:nth-child(1) {
+  background: var(--accent-color);
+  color: #fff;
 }
 
-#button:nth-child(2) {
-  background-color: #dc3545;
+.actions button#button:nth-child(1):hover {
+  background: #0056b3;
+  transform: scale(1.05);
 }
 
-#button:nth-child(2):hover {
-  background-color: #a71d2a;
+.actions button#button:nth-child(2) {
+  background: var(--danger-color);
+  color: #fff;
 }
 
-#button:nth-child(3) {
-  background-color: #e79d60;
+.actions button#button:nth-child(2):hover {
+  background: #c92a2a;
+  transform: scale(1.05);
 }
 
-#button:nth-child(3):hover {
-  background-color: #bd722c;
+.actions button#button:nth-child(3) {
+  background: #aaa;
+  color: #fff;
+}
+
+.actions button#button:nth-child(3):hover {
+  background: #888;
+  transform: scale(1.05);
 }

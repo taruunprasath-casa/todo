@@ -1,43 +1,106 @@
+:root {
+  --header-bg: #f9f9f9;
+  --header-border: rgba(200, 200, 200, 0.4);
+  --text-color: #1a1a1a;
+  --date-color: #ff0000;
+  --task-count-text: #1a1a1a;
+  --theme-btn-bg: #007bff;
+  --theme-btn-hover: #6bb2ff;
+  --theme-btn-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  --header-bg: #2a2a2a;
+  --header-border: rgba(80, 80, 80, 0.6);
+  --text-color: #eaeaea;
+  --date-color: #ff7070;
+  --task-count-text: #ffffff;
+  --theme-btn-bg: #4da3ff;
+  --theme-btn-hover: #1e6ed9;
+  --theme-btn-text: #ffffff;
+}
+
+
 .header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
-  margin-right: 10px;
-  padding: 15px 20px; 
+  padding: 15px 20px;
   background-color: var(--header-bg);
+  border: 1px solid var(--header-border);
   border-radius: 10px;
+  transition: background-color 0.3s, border 0.3s;
 }
+
 
 .header-left h1 {
   font-size: 28px;
   font-weight: 700;
   margin: 0;
   color: var(--text-color);
+  transition: color 0.3s;
 }
 
 .date {
   display: block;
   font-size: 16px;
-  color: #ff0000;
+  color: var(--date-color);
   margin-top: 4px;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
 .task-count {
   background: linear-gradient(135deg, #8bcbff, #6cc9f0);
-  color: var(--text-color);
+  color: var(--task-count-text);
   padding: 8px 14px;
   border-radius: 20px;
   font-weight: 600;
   box-shadow: 0 2px 6px rgba(24, 137, 250, 0.4);
+  transition: color 0.3s, background 0.3s;
 }
-.theme-toggle {
-  padding: 8px 12px;
-  font-size: 14px;
+
+.theme-btn {
   border: none;
-  border-radius: 6px;
+  background: transparent; 
   cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%; 
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-btn:hover,
+.theme-btn:focus {
+  background-color: var(--theme-btn-hover);
+  transform: scale(1.15);
+  outline: none;
+}
+
+.theme-icon {
+  font-size: 32px; 
+  color: var(--text-color); 
+  transition: transform 0.5s ease, opacity 0.4s ease, color 0.3s;
+}
+
+
+.theme-btn:hover .theme-icon {
+  transform: rotate(20deg);
+}
+
+.header.light .theme-icon.dark {
+  transform: rotate(360deg);
+}
+.header.dark .theme-icon.light {
+  transform: rotate(360deg);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }

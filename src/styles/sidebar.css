@@ -1,18 +1,42 @@
+/* Theme variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --hover-bg: #f0f0f0;
+  --btn-bg: #007bff;
+  --btn-bg-hover: #0056b3;
+  --btn-text: #ffffff;
+  --sidebar-border: rgba(200, 200, 200, 0.3);
+}
+
+[data-theme="dark"] {
+  --bg-color: #1e1e1e;
+  --text-color: #e5e5e5;
+  --hover-bg: #2a2a2a;
+  --btn-bg: #4da3ff;
+  --btn-bg-hover: #1e6ed9;
+  --btn-text: #ffffff;
+  --sidebar-border: rgba(80, 80, 80, 0.6);
+}
+
+/* Sidebar wrapper */
 .sidebar {
   width: 250px;
   background: var(--bg-color);
   backdrop-filter: blur(10px);
-  border-right: 1px solid rgba(200, 200, 200, 0.3);
+  border-right: 1px solid var(--sidebar-border);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  transition: background 0.3s, color 0.3s;
 }
 
 .sidebar h2 {
   font-size: 18px;
   font-weight: 600;
   color: var(--text-color);
+  transition: color 0.3s;
 }
 
 .sidebar h3 {
@@ -20,6 +44,7 @@
   font-size: 14px;
   font-weight: 500;
   color: var(--text-color);
+  transition: color 0.3s;
 }
 
 .menu-list,
@@ -36,30 +61,36 @@
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.1s ease;
+  color: var(--text-color);
 }
 
 .menu-list li:hover,
 .sidebar ul li:hover {
-  background: var(--bg-color);
+  background: var(--hover-bg);
   transform: translateX(3px);
 }
 
+/* Tags */
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-
-.btn{
-  background-color: #007bff;
-  color: white;
+/* Button */
+.btn {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
   border: none;
   padding: 10px 15px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.95rem;
   font-weight: 500;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, transform 0.15s ease;
 }
 
+.btn:hover {
+  background-color: var(--btn-bg-hover);
+  transform: scale(1.05);
+}
