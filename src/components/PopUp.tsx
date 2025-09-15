@@ -42,6 +42,8 @@ export default function PopUp({ onAdd }: AddTaskFormProps) {
     setPriority("medium");
   };
 
+ 
+
   return (
     <div className="main-container">
       <div className="addTask"><h3>Add New Task</h3></div>
