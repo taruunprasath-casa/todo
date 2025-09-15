@@ -32,7 +32,7 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 25px;
   animation: slideIn 0.3s ease forwards;
   overflow-y: auto;
   z-index: 999;
@@ -49,7 +49,6 @@
   }
 }
 
-/* Headline */
 .task-details h3 {
   font-size: 1.4rem;
   font-weight: 600;
@@ -57,17 +56,15 @@
   color: var(--accent-color);
 }
 
-/* Inputs */
 .task-details input[type="text"],
 .task-details input[type="date"],
 .task-details textarea,
 .task-details select {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   border: 1px solid var(--input-border);
   border-radius: 8px;
   background: var(--input-bg);
-  color: var(--text-color);
   font-size: 0.95rem;
   transition: border 0.2s, box-shadow 0.2s;
 }
@@ -80,20 +77,19 @@
   box-shadow: 0 0 6px var(--accent-color);
 }
 
-/* Textarea */
-.task-details textarea {
-  min-height: 80px;
+.task-details textarea{
+  min-height: 30px;
   resize: vertical;
 }
 
-/* Date row layout */
-.date-row {
+.date_row {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
-.date-row label {
+.date_row label {
   flex: 1;
   font-size: 0.9rem;
   color: var(--text-color);
@@ -102,7 +98,6 @@
   gap: 4px;
 }
 
-/* Labels */
 .task-details label {
   font-size: 0.9rem;
   font-weight: 500;
@@ -112,13 +107,11 @@
   color: var(--text-color);
 }
 
-/* Checkbox */
 .task-details input[type="checkbox"] {
   width: auto;
   margin-right: 8px;
 }
 
-/* Action buttons */
 .actions {
   display: flex;
   justify-content: space-between;

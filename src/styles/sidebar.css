@@ -19,7 +19,6 @@
   --sidebar-border: rgba(80, 80, 80, 0.6);
 }
 
-/* Sidebar wrapper */
 .sidebar {
   width: 250px;
   background: var(--bg-color);
@@ -70,14 +69,6 @@
   transform: translateX(3px);
 }
 
-/* Tags */
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-/* Button */
 .btn {
   background-color: var(--btn-bg);
   color: var(--btn-text);
