@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/header.css";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { ThemeContext } from "../App"
 
 interface HeaderProps {
   count: number;
   completed: number;
-  theme: "light" | "dark";
-  setTheme: (theme: "light" | "dark") => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ count, completed, theme, setTheme }) => {
+const Header: React.FC<HeaderProps> = ({ count, completed }) => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const today = new Date().toLocaleDateString("en-US", {
     weekday: "long",
     month: "short",
@@ -29,21 +30,14 @@ const Header: React.FC<HeaderProps> = ({ count, completed, theme, setTheme }) =>
         </span>
 
         {theme === "light" ? (
-          <button
-            className="theme-btn"
-            onClick={() => setTheme("dark")}
-          >
+          <button className="theme-btn" onClick={toggleTheme}>
             <DarkModeIcon className="theme-icon dark" />
           </button>
         ) : (
-          <button
-            className="theme-btn"
-            onClick={() => setTheme("light")}
-          >
+          <button className="theme-btn" onClick={toggleTheme}>
             <LightModeIcon className="theme-icon light" />
           </button>
         )}
-
       </div>
     </header>
   );
