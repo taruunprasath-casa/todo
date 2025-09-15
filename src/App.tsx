@@ -17,17 +17,22 @@ export interface Task {
   completed: boolean;
 }
 
+export const ThemeContext = React.createContext<{
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+}>({
+  theme: "light",
+  toggleTheme: () => { },
+});
+
+
+
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
-  const ThemeContext = React.createContext({
-    theme: "light",
-    toggleTheme: () => { },
-  });
 
-  // 🔹 Load tasks from localStorage on first render
   useEffect(() => {
     const saved = localStorage.getItem("todo");
     if (saved) {
@@ -35,7 +40,6 @@ const App: React.FC = () => {
     }
   }, []);
 
-  // 🔹 Keep localStorage updated whenever tasks change
   useEffect(() => {
     localStorage.setItem("todo", JSON.stringify(tasks));
   }, [tasks]);
@@ -78,8 +82,6 @@ const App: React.FC = () => {
           <Header
             count={tasks.length}
             completed={tasks.filter((t) => t.completed).length}
-            theme={theme}
-            setTheme={setTheme}
           />
           <TaskList
             tasks={tasks}
@@ -97,6 +99,7 @@ const App: React.FC = () => {
           />
         )}
       </div>
+
     </ThemeContext.Provider>
   );
 };
