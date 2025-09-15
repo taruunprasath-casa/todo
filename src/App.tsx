@@ -1,24 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TaskDetails from "./components/TaskDetails";
 import TaskList from "./components/TaskList";
 import Sidebar from "./components/SideBar";
 import "./App.css";
 import Header from "./components/Header";
 
-export interface Subtask {
-  id: number;
-  title: string;
-  completed: boolean;
-}
-
 export interface Task {
   id: number;
   title: string;
   description?: string;
-  list: string;
-  dueDate?: string;
-  tags: string[];
-  subtasks: Subtask[];
+  startDate?: string;
+  endDate?: string;
+  category: "today" | "week" | "month" | "later";
+  recurring: "none" | "daily" | "weekly";
+  priority: "high" | "medium" | "low";
   completed: boolean;
 }
 
@@ -32,16 +27,21 @@ const App: React.FC = () => {
     toggleTheme: () => { },
   });
 
-  const addTask = (title: string) => {
-    const newTask: Task = {
-      id: Date.now(),
-      title,
-      list: "General",
-      tags: [],
-      subtasks: [],
-      completed: false,
-    };
-    setTasks((prev) => [...prev, newTask]);
+  // 🔹 Load tasks from localStorage on first render
+  useEffect(() => {
+    const saved = localStorage.getItem("todo");
+    if (saved) {
+      setTasks(JSON.parse(saved));
+    }
+  }, []);
+
+  // 🔹 Keep localStorage updated whenever tasks change
+  useEffect(() => {
+    localStorage.setItem("todo", JSON.stringify(tasks));
+  }, [tasks]);
+
+  const addTask = (task: Task) => {
+    setTasks((prev) => [...prev, task]);
   };
 
   const toggleComplete = (id: number) => {
@@ -64,29 +64,41 @@ const App: React.FC = () => {
   };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <ThemeContext.Provider
+      value={{
+        theme,
+        toggleTheme: () =>
+          setTheme(theme === "light" ? "dark" : "light"),
+      }}
+    >
+      <div className={`app ${theme}`}>
+        <Sidebar onAdd={addTask} />
+
+        <main className="main-content">
+          <Header
+            count={tasks.length}
+            completed={tasks.filter((t) => t.completed).length}
+            theme={theme}
+            setTheme={setTheme}
+          />
+          <TaskList
+            tasks={tasks}
+            onSelect={setSelectedTask}
+            onToggleComplete={toggleComplete}
+          />
+        </main>
+
+        {selectedTask && (
+          <TaskDetails
+            task={selectedTask}
+            onClose={() => setSelectedTask(null)}
+            onUpdate={updateTask}
+            onDelete={deleteTask}
+          />
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </ThemeContext.Provider>
+  );
+};
 
 export default App;
