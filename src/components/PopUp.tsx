@@ -42,30 +42,29 @@ export default function PopUp({ onAdd }: AddTaskFormProps) {
     setPriority("medium");
   };
 
- 
+
 
   return (
     <div className="main-container">
       <div className="addTask"><h3>Add New Task</h3></div>
       <form onSubmit={handleSubmit} className="from-container">
-        
+
         <div className="title">
           <p>Task Title</p>
-          <input type="text" required value={title} onChange={(e) => setTitle(e.target.value)} />
+          <input type="text" placeholder="Enter Task Title" required value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
 
         <div className="description">
           <p>Description</p>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+          <textarea placeholder="Enter the Description" value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
 
         <div className="date-row">
           <p>Start Date</p>
-          <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+          <input type="date" />
           <p>End Date</p>
-          <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+          <input type="date" />
         </div>
-
         <div className="category">
           <p>Category</p>
           <select value={category} onChange={(e) => setCategory(e.target.value as Task["category"])}>
