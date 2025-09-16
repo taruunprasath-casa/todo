@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "../styles/header.css";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import { ThemeContext } from "../App"
+import { ThemeContext } from "../pages/Home";
 
 interface HeaderProps {
   count: number;
