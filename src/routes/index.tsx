@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import CalendarPage from "../components/Calander";
+import CalendarPage from "../components/Calendar";
 import Home from "../pages/Home";
 
 const routers = createBrowserRouter([
