@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/sidebar.css";
 import PopUp from "./PopUp";
 import type { Task } from "./type";
+import { Link} from "react-router-dom";
 
 interface SidebarProps {
   onAdd: (task: Task) => void;
@@ -17,7 +18,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onAdd }) => {
         <ul className="menu-list">
           <li>Upcoming</li>
           <li>Today</li>
-          <li>Calendar</li>
+          <li><Link to="/calendar">Calendar</Link></li>
         </ul>
 
         <h2>Add New Task</h2>

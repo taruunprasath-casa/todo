@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import type { Task } from "../App";
+import type { Task } from "../pages/Home";
 import "../styles/taskdetails.css";
 
 interface TaskDetailsProps {
@@ -11,6 +11,8 @@ interface TaskDetailsProps {
 
 const TaskDetails: React.FC<TaskDetailsProps> = ({ task, onClose, onUpdate, onDelete }) => {
   const [editedTask, setEditedTask] = useState<Task>(task);
+  const [startDate, setStartDate] = useState(task.startDate || "");
+  const [endDate, setEndDate] = useState(task.endDate || "");
 
   const handleSave = () => {
     onUpdate(editedTask);
@@ -34,24 +36,23 @@ const TaskDetails: React.FC<TaskDetailsProps> = ({ task, onClose, onUpdate, onDe
         onChange={(e) => setEditedTask({ ...editedTask, description: e.target.value })}
       />
 
-      <div className="date_row">
-        <label>
-          Start Date:
-          <input
-            type="date"
-            value={editedTask.startDate || ""}
-            onChange={(e) => setEditedTask({ ...editedTask, startDate: e.target.value })}
-          />
-        </label>
-        <label>
-          End Date:
-          <input
-            type="date"
-            value={editedTask.endDate || ""}
-            onChange={(e) => setEditedTask({ ...editedTask, endDate: e.target.value })}
-          />
-        </label>
+      <div className="date-row">
+        <p>Start Date</p>
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+          required
+        />
+        <p>End Date</p>
+        <input
+          type="date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+          required
+        />
       </div>
+
 
       <label>
         Category:

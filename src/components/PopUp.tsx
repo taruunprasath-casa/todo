@@ -61,10 +61,21 @@ export default function PopUp({ onAdd }: AddTaskFormProps) {
 
         <div className="date-row">
           <p>Start Date</p>
-          <input type="date" />
+          <input
+            type="date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+            required
+          />
           <p>End Date</p>
-          <input type="date" />
+          <input
+            type="date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+            required
+          />
         </div>
+    
         <div className="category">
           <p>Category</p>
           <select value={category} onChange={(e) => setCategory(e.target.value as Task["category"])}>
